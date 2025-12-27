@@ -1,0 +1,44 @@
+{
+  "common": {
+    "offline": "You are currently offline. Some features may not be available.",
+    "loading": "Loading...",
+    "error": "An error occurred. Please try again.",
+    "somethingWentWrong": "Something went wrong",
+    "tryAgain": "Try again"
+  },
+  "onboarding": {
+    "title": "Onboarding Form",
+    "step": "Step {{current}} of {{total}}",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone Number",
+      "corporationNumber": "Corporation Number"
+    },
+    "placeholders": {
+      "firstName": "Enter your first name",
+      "lastName": "Enter your last name",
+      "phone": "+1 (306) 277-6103",
+      "corporationNumber": "123456789"
+    },
+    "errors": {
+      "required": "This field is required",
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "phoneRequired": "Phone number is required",
+      "corporationNumberRequired": "Corporation number is required",
+      "maxLength": "Must be at most {{max}} characters",
+      "invalidPhone": "Must be a valid Canadian phone number (+1XXXXXXXXXX)",
+      "invalidCorporation": "Invalid Corporation Number",
+      "corporationLength": "Corporation number must be 9 digits",
+      "corporationDigitsOnly": "Must contain only digits",
+      "validationFailed": "Validation failed. Please try again."
+    },
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "success": {
+      "title": "Success!",
+      "message": "Your information has been submitted successfully."
+    }
+  }
+}

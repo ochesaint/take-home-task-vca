@@ -1,0 +1,44 @@
+{
+  "common": {
+    "offline": "Vous êtes actuellement hors ligne. Certaines fonctionnalités peuvent ne pas être disponibles.",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "somethingWentWrong": "Une erreur est survenue",
+    "tryAgain": "Réessayer"
+  },
+  "onboarding": {
+    "title": "Formulaire d'inscription",
+    "step": "Étape {{current}} sur {{total}}",
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "phone": "Numéro de téléphone",
+      "corporationNumber": "Numéro de société"
+    },
+    "placeholders": {
+      "firstName": "Entrez votre prénom",
+      "lastName": "Entrez votre nom de famille",
+      "phone": "+1 (306) 277-6103",
+      "corporationNumber": "123456789"
+    },
+    "errors": {
+      "required": "Ce champ est requis",
+      "firstNameRequired": "Le prénom est requis",
+      "lastNameRequired": "Le nom de famille est requis",
+      "phoneRequired": "Le numéro de téléphone est requis",
+      "corporationNumberRequired": "Le numéro de société est requis",
+      "maxLength": "Doit contenir au maximum {{max}} caractères",
+      "invalidPhone": "Doit être un numéro de téléphone canadien valide (+1XXXXXXXXXX)",
+      "invalidCorporation": "Numéro de société invalide",
+      "corporationLength": "Le numéro de société doit comporter 9 chiffres",
+      "corporationDigitsOnly": "Doit contenir uniquement des chiffres",
+      "validationFailed": "La validation a échoué. Veuillez réessayer."
+    },
+    "submit": "Soumettre",
+    "submitting": "Soumission en cours...",
+    "success": {
+      "title": "Succès!",
+      "message": "Vos informations ont été soumises avec succès."
+    }
+  }
+}

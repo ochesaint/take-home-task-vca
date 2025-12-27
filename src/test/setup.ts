@@ -1,22 +1,20 @@
-import { expect, afterEach, beforeAll, afterAll } from 'vitest'
-import { cleanup } from '@testing-library/react'
-import * as matchers from '@testing-library/jest-dom/matchers'
-import { toHaveNoViolations } from 'jest-axe'
+import '@testing-library/jest-dom'
+import { afterAll, afterEach, beforeAll, beforeEach } from 'vitest'
 import { server } from './mocks/server'
-
-// Extend Vitest's expect with jest-dom matchers
-expect.extend(matchers)
-expect.extend(toHaveNoViolations)
 
 // Establish API mocking before all tests
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
 
-// Reset any request handlers that are declared as a part of our tests
-afterEach(() => {
-  cleanup()
-  server.resetHandlers()
+// Clear localStorage before each test to prevent state leakage
+beforeEach(() => {
+  localStorage.clear()
 })
 
-// Clean up after the tests are finished
-afterAll(() => server.close())
+// Reset any request handlers between tests
+afterEach(() => {
+  server.resetHandlers()
+  localStorage.clear()
+})
 
+// Clean up after all tests are done
+afterAll(() => server.close())
