@@ -1,0 +1,12 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "hello": "Hello",
+    "goodbye": "Goodbye"
+  },
+  "app": {
+    "title": "Venn Take Home",
+    "description": "A modern React application"
+  }
+}
+

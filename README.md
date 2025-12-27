@@ -8,6 +8,12 @@ A modern React project built with:
 - **React Compiler** - Automatic optimization
 - **Tailwind CSS v4** - Utility-first CSS framework
 - **shadcn/ui** - Beautiful, accessible component library
+- **React Hook Form + Zod** - Form handling and validation
+- **TanStack Query v5** - Powerful data synchronization
+- **react-i18next** - Internationalization
+- **Vitest + RTL + MSW + jest-axe** - Testing stack
+- **Storybook 8** - Component development and documentation
+- **Sentry** - Error tracking and monitoring
 
 ## Getting Started
 
@@ -57,17 +63,71 @@ pnpm preview
 yarn preview
 ```
 
+### Testing
+
+Run tests:
+
+```bash
+npm run test
+# or
+pnpm test
+```
+
+Run tests with UI:
+
+```bash
+npm run test:ui
+# or
+pnpm test:ui
+```
+
+Run tests with coverage:
+
+```bash
+npm run test:coverage
+# or
+pnpm test:coverage
+```
+
+### Storybook
+
+Start Storybook:
+
+```bash
+npm run storybook
+# or
+pnpm storybook
+```
+
+Build Storybook:
+
+```bash
+npm run build-storybook
+# or
+pnpm build-storybook
+```
+
 ## Project Structure
 
 ```
 ├── src/
 │   ├── components/     # React components
 │   │   └── ui/         # shadcn/ui components
-│   ├── lib/            # Utility functions
+│   ├── lib/            # Utility functions and configs
+│   │   ├── i18n.ts     # i18next configuration
+│   │   ├── query-client.ts  # TanStack Query client
+│   │   ├── sentry.ts   # Sentry configuration
+│   │   └── utils.ts    # Utility functions
+│   ├── locales/        # Translation files
+│   ├── test/           # Test utilities and mocks
+│   │   ├── mocks/      # MSW handlers and server
+│   │   └── utils/      # Test utilities
 │   ├── App.tsx         # Main app component
 │   ├── main.tsx        # Entry point
 │   └── index.css       # Global styles with Tailwind
+├── .storybook/         # Storybook configuration
 ├── components.json     # shadcn/ui configuration
+├── vitest.config.ts    # Vitest configuration
 ├── vite.config.ts      # Vite configuration
 └── tsconfig.json       # TypeScript configuration
 ```
@@ -97,6 +157,12 @@ npx shadcn@latest add input
 - 🧩 **shadcn/ui** - Copy-paste component library
 - 📦 **TypeScript 5.7** - Full type safety
 - 🛣️ **Path Aliases** - Clean imports with `@/` prefix
+- 📝 **React Hook Form + Zod** - Type-safe form validation
+- 🔄 **TanStack Query v5** - Powerful server state management
+- 🌍 **react-i18next** - Internationalization support
+- 🧪 **Vitest + RTL + MSW + jest-axe** - Complete testing stack
+- 📚 **Storybook 8** - Component development environment
+- 🐛 **Sentry** - Error tracking and monitoring
 
 ## Path Aliases
 
@@ -109,4 +175,85 @@ import { Button } from "../../components/ui/button"
 // Use
 import { Button } from "@/components/ui/button"
 ```
+
+## Usage Examples
+
+### React Hook Form + Zod
+
+```typescript
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+})
+
+const { register, handleSubmit } = useForm({
+  resolver: zodResolver(schema),
+})
+```
+
+### TanStack Query
+
+```typescript
+import { useQuery } from '@tanstack/react-query'
+
+const { data, isLoading } = useQuery({
+  queryKey: ['users'],
+  queryFn: fetchUsers,
+})
+```
+
+### i18next
+
+```typescript
+import { useTranslation } from 'react-i18next'
+
+const { t, i18n } = useTranslation()
+// Use: t('common.welcome')
+// Change language: i18n.changeLanguage('es')
+```
+
+### Testing with MSW
+
+```typescript
+import { render, screen } from '@/test/utils/test-utils'
+import { server } from '@/test/mocks/server'
+import { http, HttpResponse } from 'msw'
+
+// Mock API in tests
+server.use(
+  http.get('/api/users', () => {
+    return HttpResponse.json([{ id: 1, name: 'John' }])
+  })
+)
+```
+
+### Accessibility Testing
+
+```typescript
+import { axe, toHaveNoViolations } from 'jest-axe'
+
+const { container } = render(<Component />)
+const results = await axe(container)
+expect(results).toHaveNoViolations()
+```
+
+## Environment Variables
+
+Create a `.env` file based on `.env.example`:
+
+```bash
+VITE_SENTRY_DSN=your_sentry_dsn_here
+```
+
+## Sentry Setup
+
+Sentry is configured to only run in production. Set your DSN in the environment variables. The configuration includes:
+
+- Browser tracing integration
+- Session replay
+- Error tracking
 
