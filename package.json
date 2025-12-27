@@ -7,12 +7,15 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md,mdx,html,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md,mdx,html,yml,yaml}\"",
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -58,7 +61,12 @@
     "@storybook/addon-links": "^8.4.7",
     "@storybook/blocks": "^8.4.7",
     "@storybook/test": "^8.4.7",
-    "storybook": "^8.4.7"
+    "storybook": "^8.4.7",
+    "prettier": "^3.4.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md,mdx,html,yml,yaml}": ["npx prettier --write"]
   }
 }
-

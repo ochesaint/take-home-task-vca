@@ -107,6 +107,27 @@ npm run build-storybook
 pnpm build-storybook
 ```
 
+### Formatting
+
+Format code with Prettier:
+
+```bash
+npm run format
+# or
+pnpm format
+```
+
+Check formatting without making changes:
+
+```bash
+npm run format:check
+# or
+pnpm format:check
+```
+
+**Note:** Prettier automatically runs on commit via Husky and lint-staged. Only
+staged files will be formatted.
+
 ## Project Structure
 
 ```
@@ -126,6 +147,9 @@ pnpm build-storybook
 │   ├── main.tsx        # Entry point
 │   └── index.css       # Global styles with Tailwind
 ├── .storybook/         # Storybook configuration
+├── .husky/             # Git hooks (pre-commit)
+├── .prettierrc         # Prettier configuration
+├── .prettierignore     # Prettier ignore patterns
 ├── components.json     # shadcn/ui configuration
 ├── vitest.config.ts    # Vitest configuration
 ├── vite.config.ts      # Vite configuration
@@ -163,6 +187,7 @@ npx shadcn@latest add input
 - 🧪 **Vitest + RTL + MSW + jest-axe** - Complete testing stack
 - 📚 **Storybook 8** - Component development environment
 - 🐛 **Sentry** - Error tracking and monitoring
+- 💅 **Prettier** - Code formatting with pre-commit hooks
 
 ## Path Aliases
 
@@ -170,10 +195,10 @@ The project uses path aliases for cleaner imports:
 
 ```typescript
 // Instead of
-import { Button } from "../../components/ui/button"
+import { Button } from '../../components/ui/button'
 
 // Use
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
 ```
 
 ## Usage Examples
@@ -251,9 +276,41 @@ VITE_SENTRY_DSN=your_sentry_dsn_here
 
 ## Sentry Setup
 
-Sentry is configured to only run in production. Set your DSN in the environment variables. The configuration includes:
+Sentry is configured to only run in production. Set your DSN in the environment
+variables. The configuration includes:
 
 - Browser tracing integration
 - Session replay
 - Error tracking
 
+## Code Formatting
+
+This project uses Prettier for code formatting with automatic formatting on
+commit.
+
+### Pre-commit Hook
+
+Husky is configured to run Prettier on staged files before each commit. This
+ensures consistent code formatting across the project.
+
+The pre-commit hook:
+
+- Runs `lint-staged` which formats only staged files
+- Formats: `.ts`, `.tsx`, `.js`, `.jsx`, `.json`, `.css`, `.md`, `.mdx`,
+  `.html`, `.yml`, `.yaml`
+- Prevents commits if formatting fails (you can bypass with `--no-verify` if
+  needed)
+
+### Manual Formatting
+
+You can format all files manually:
+
+```bash
+pnpm format
+```
+
+Or check formatting without making changes:
+
+```bash
+pnpm format:check
+```

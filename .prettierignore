@@ -1,0 +1,32 @@
+# Dependencies
+node_modules
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Build outputs
+dist
+dist-ssr
+build
+.next
+out
+
+# Coverage
+coverage
+.nyc_output
+
+# Storybook
+storybook-static
+
+# Generated files
+*.tsbuildinfo
+.DS_Store
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+

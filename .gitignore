@@ -31,3 +31,6 @@ coverage/
 .nyc_output/
 *.lcov
 
+# Husky
+.husky/_
+
