@@ -56,8 +56,8 @@
   ],
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://fe-hometask-api.qa.vault.tryvault.com/:path*"
+      "source": "/api/(.*)",
+      "destination": "https://fe-hometask-api.qa.vault.tryvault.com/$1"
     },
     {
       "source": "/((?!api|locales|assets|.*\\..*$).*)",
