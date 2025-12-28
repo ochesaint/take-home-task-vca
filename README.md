@@ -1,316 +1,201 @@
 # Venn Take Home
 
-A modern React project built with:
+A modern, production-ready React onboarding form application with comprehensive
+accessibility, internationalization, and performance optimizations.
 
-- **React 19** - Latest React with new features
-- **TypeScript 5.7** - Type-safe development
-- **Vite 6** - Fast build tool and dev server
-- **React Compiler** - Automatic optimization
-- **Tailwind CSS v4** - Utility-first CSS framework
-- **shadcn/ui** - Beautiful, accessible component library
-- **React Hook Form + Zod** - Form handling and validation
-- **TanStack Query v5** - Powerful data synchronization
-- **react-i18next** - Internationalization
-- **Vitest + RTL + MSW + jest-axe** - Testing stack
-- **Storybook 8** - Component development and documentation
-- **Sentry** - Error tracking and monitoring
+**Live Site:**
+[https://take-home-task-vca.vercel.app/](https://take-home-task-vca.vercel.app/)
 
-## Getting Started
-
-### Install Dependencies
+## 🚀 Quick Start
 
 ```bash
-npm install
-# or
+# Install dependencies
 pnpm install
-# or
-yarn install
-```
 
-### Development
-
-Start the development server:
-
-```bash
-npm run dev
-# or
+# Start development server
 pnpm dev
-# or
-yarn dev
-```
 
-### Build
-
-Build for production:
-
-```bash
-npm run build
-# or
+# Build for production
 pnpm build
-# or
-yarn build
-```
 
-### Preview
-
-Preview the production build:
-
-```bash
-npm run preview
-# or
-pnpm preview
-# or
-yarn preview
-```
-
-### Testing
-
-Run tests:
-
-```bash
-npm run test
-# or
+# Run tests
 pnpm test
-```
 
-Run tests with UI:
-
-```bash
-npm run test:ui
-# or
-pnpm test:ui
-```
-
-Run tests with coverage:
-
-```bash
-npm run test:coverage
-# or
-pnpm test:coverage
-```
-
-### Storybook
-
-Start Storybook:
-
-```bash
-npm run storybook
-# or
+# Start Storybook
 pnpm storybook
 ```
 
-Build Storybook:
+## 🛠️ Technologies & Tools
 
-```bash
-npm run build-storybook
-# or
-pnpm build-storybook
+- **React 19** - Latest React with concurrent features
+- **TypeScript 5.7** - Full type safety
+- **Vite 6** - Lightning-fast build tool and HMR
+- **React Compiler** - Automatic memoization and optimization (no manual
+  `useMemo`/`useCallback` needed)
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **shadcn/ui** - Accessible component library built on Radix UI
+- **React Hook Form + Zod** - Type-safe form handling and validation
+- **TanStack Query v5** - Server state management with caching
+- **react-i18next** - Internationalization (English/French)
+- **Vitest + RTL + MSW + jest-axe** - Complete testing stack with accessibility
+  testing
+- **Storybook 8** - Component development and documentation
+- **Sentry** - Error tracking with PII scrubbing (PIPEDA compliant)
+
+## ✨ Features
+
+- **Configurable Form System** - Declarative form configuration with multi-step
+  support
+- **Async Field Validation** - Real-time validation with visual indicators
+- **Internationalization** - Full i18n support (EN/FR) with language switcher
+- **Accessibility (AODA Compliant)** - WCAG 2.1 AA compliant with automated a11y
+  testing
+- **Error Boundaries** - Graceful error handling with user-friendly fallbacks
+- **Input Sanitization** - XSS protection via DOMPurify
+- **Phone Number Masking** - Canadian phone number formatting
+- **Responsive Design** - Mobile-first approach with Tailwind CSS
+
+## 🏗️ Architecture Decisions
+
+### Feature-Based Structure
+
+- Organized by features (`onboarding/`) with co-located components, configs,
+  schemas, and services
+- Clear separation of concerns with reusable form system
+
+### Configurable Form System
+
+- Declarative form configuration enables easy field addition/modification
+- Type-safe with TypeScript generics
+- Supports text, phone, and number field types with extensibility
+
+### React Compiler
+
+- Automatic optimization eliminates need for manual `React.memo`, `useMemo`, or
+  `useCallback`
+- Codebase is cleaner and more maintainable without manual performance hooks
+
+### Lazy Loading Strategy
+
+- Sentry is dynamically imported to reduce initial bundle size
+- Code splitting with manual chunks for optimal loading
+
+### Security First
+
+- Input sanitization on all form submissions
+- PII scrubbing in error reports (PIPEDA compliance)
+- Security headers via Vercel configuration (CSP, HSTS, XSS protection)
+
+## ♿ Accessibility Support
+
+- **Automated Testing** - jest-axe integration ensures WCAG 2.1 AA compliance
+- **Semantic HTML** - Proper use of form elements, labels, and ARIA attributes
+- **ARIA Roles** - `role="alert"` for errors, `role="progressbar"` for stepper
+- **Keyboard Navigation** - Full keyboard support throughout
+- **Screen Reader Support** - All interactive elements properly labeled
+- **Focus Management** - Logical tab order and visible focus indicators
+
+## ⚡ Performance Features
+
+### Build Optimizations
+
+- **Code Splitting** - Manual chunks for vendor libraries (React, forms, query,
+  i18n)
+- **Compression** - Gzip and Brotli compression for all assets
+- **Source Maps** - Hidden source maps in production (reduced bundle size)
+- **Bundle Analysis** - `pnpm build:analyze` for bundle size analysis
+
+### Runtime Optimizations
+
+- **React Compiler** - Automatic memoization and re-render optimization
+- **TanStack Query** - Intelligent caching with 5-minute stale time
+- **Lazy Loading** - Sentry loaded asynchronously
+- **Asset Caching** - Long-term caching for static assets (1 year),
+  stale-while-revalidate for locales
+
+### Lighthouse Targets
+
+- Performance: ≥90
+- Accessibility: ≥95
+- Best Practices: ≥90
+- SEO: ≥90
+- Script size: <300KB
+- Total size: <600KB
+
+## 🔒 Production Optimizations
+
+### Security Headers (via Vercel)
+
+- Content Security Policy (CSP)
+- Strict Transport Security (HSTS)
+- X-Frame-Options, X-Content-Type-Options
+- Referrer Policy and Permissions Policy
+
+### Error Monitoring
+
+- Sentry integration with browser tracing and session replay
+- PII scrubbing for PIPEDA compliance
+- Environment-based sampling rates
+
+### Caching Strategy
+
+- Static assets: 1 year cache with immutable flag
+- Locales: 1 day cache with 7-day stale-while-revalidate
+- API responses: Managed by TanStack Query
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable components
+│   ├── form/           # Configurable form system
+│   └── ui/             # shadcn/ui components
+├── features/           # Feature-based modules
+│   └── onboarding/     # Onboarding feature
+├── lib/                # Utilities and configs
+├── test/               # Test utilities and mocks
+└── config/             # App configuration
 ```
 
-### Formatting
+## 🧪 Testing
 
-Format code with Prettier:
+- **Unit Tests** - Component and utility testing with Vitest
+- **Integration Tests** - Form flow and API integration
+- **Accessibility Tests** - Automated a11y testing with jest-axe
+- **MSW** - API mocking for reliable tests
+- **Coverage** - Run `pnpm test:coverage` for coverage reports
 
-```bash
-npm run format
-# or
-pnpm format
-```
+## 🌍 Internationalization
 
-Check formatting without making changes:
+- English and French translations
+- Browser language detection
+- Language switcher in header
+- All user-facing text externalized to translation files
 
-```bash
-npm run format:check
-# or
-pnpm format:check
-```
+## 📝 Scripts
 
-**Note:** Prettier automatically runs on commit via Husky and lint-staged. Only
-staged files will be formatted.
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm build:analyze` - Build with bundle analysis
+- `pnpm test` - Run tests
+- `pnpm test:ui` - Run tests with UI
+- `pnpm test:coverage` - Run tests with coverage
+- `pnpm storybook` - Start Storybook
+- `pnpm lint` - Lint code
+- `pnpm format` - Format code with Prettier
 
-## Project Structure
-
-```
-├── src/
-│   ├── components/     # React components
-│   │   └── ui/         # shadcn/ui components
-│   ├── lib/            # Utility functions and configs
-│   │   ├── i18n.ts     # i18next configuration
-│   │   ├── query-client.ts  # TanStack Query client
-│   │   ├── sentry.ts   # Sentry configuration
-│   │   └── utils.ts    # Utility functions
-│   ├── locales/        # Translation files
-│   ├── test/           # Test utilities and mocks
-│   │   ├── mocks/      # MSW handlers and server
-│   │   └── utils/      # Test utilities
-│   ├── App.tsx         # Main app component
-│   ├── main.tsx        # Entry point
-│   └── index.css       # Global styles with Tailwind
-├── .storybook/         # Storybook configuration
-├── .husky/             # Git hooks (pre-commit)
-├── .prettierrc         # Prettier configuration
-├── .prettierignore     # Prettier ignore patterns
-├── components.json     # shadcn/ui configuration
-├── vitest.config.ts    # Vitest configuration
-├── vite.config.ts      # Vite configuration
-└── tsconfig.json       # TypeScript configuration
-```
-
-## Adding shadcn/ui Components
-
-To add a new shadcn/ui component:
-
-```bash
-npx shadcn@latest add [component-name]
-```
-
-For example:
-
-```bash
-npx shadcn@latest add button
-npx shadcn@latest add card
-npx shadcn@latest add input
-```
-
-## Features
-
-- ⚡️ **Vite 6** - Lightning fast HMR
-- ⚛️ **React 19** - Latest React features
-- 🔧 **React Compiler** - Automatic memoization and optimization
-- 🎨 **Tailwind CSS v4** - Modern utility-first CSS
-- 🧩 **shadcn/ui** - Copy-paste component library
-- 📦 **TypeScript 5.7** - Full type safety
-- 🛣️ **Path Aliases** - Clean imports with `@/` prefix
-- 📝 **React Hook Form + Zod** - Type-safe form validation
-- 🔄 **TanStack Query v5** - Powerful server state management
-- 🌍 **react-i18next** - Internationalization support
-- 🧪 **Vitest + RTL + MSW + jest-axe** - Complete testing stack
-- 📚 **Storybook 8** - Component development environment
-- 🐛 **Sentry** - Error tracking and monitoring
-- 💅 **Prettier** - Code formatting with pre-commit hooks
-
-## Path Aliases
-
-The project uses path aliases for cleaner imports:
-
-```typescript
-// Instead of
-import { Button } from '../../components/ui/button'
-
-// Use
-import { Button } from '@/components/ui/button'
-```
-
-## Usage Examples
-
-### React Hook Form + Zod
-
-```typescript
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-
-const schema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-})
-
-const { register, handleSubmit } = useForm({
-  resolver: zodResolver(schema),
-})
-```
-
-### TanStack Query
-
-```typescript
-import { useQuery } from '@tanstack/react-query'
-
-const { data, isLoading } = useQuery({
-  queryKey: ['users'],
-  queryFn: fetchUsers,
-})
-```
-
-### i18next
-
-```typescript
-import { useTranslation } from 'react-i18next'
-
-const { t, i18n } = useTranslation()
-// Use: t('common.welcome')
-// Change language: i18n.changeLanguage('es')
-```
-
-### Testing with MSW
-
-```typescript
-import { render, screen } from '@/test/utils/test-utils'
-import { server } from '@/test/mocks/server'
-import { http, HttpResponse } from 'msw'
-
-// Mock API in tests
-server.use(
-  http.get('/api/users', () => {
-    return HttpResponse.json([{ id: 1, name: 'John' }])
-  })
-)
-```
-
-### Accessibility Testing
-
-```typescript
-import { axe, toHaveNoViolations } from 'jest-axe'
-
-const { container } = render(<Component />)
-const results = await axe(container)
-expect(results).toHaveNoViolations()
-```
-
-## Environment Variables
-
-Create a `.env` file based on `.env.example`:
+## 🔧 Environment Variables
 
 ```bash
 VITE_SENTRY_DSN=your_sentry_dsn_here
+VITE_ENVIRONMENT=production
 ```
 
-## Sentry Setup
+## 📚 Additional Resources
 
-Sentry is configured to only run in production. Set your DSN in the environment
-variables. The configuration includes:
-
-- Browser tracing integration
-- Session replay
-- Error tracking
-
-## Code Formatting
-
-This project uses Prettier for code formatting with automatic formatting on
-commit.
-
-### Pre-commit Hook
-
-Husky is configured to run Prettier on staged files before each commit. This
-ensures consistent code formatting across the project.
-
-The pre-commit hook:
-
-- Runs `lint-staged` which formats only staged files
-- Formats: `.ts`, `.tsx`, `.js`, `.jsx`, `.json`, `.css`, `.md`, `.mdx`,
-  `.html`, `.yml`, `.yaml`
-- Prevents commits if formatting fails (you can bypass with `--no-verify` if
-  needed)
-
-### Manual Formatting
-
-You can format all files manually:
-
-```bash
-pnpm format
-```
-
-Or check formatting without making changes:
-
-```bash
-pnpm format:check
-```
+- [Storybook](http://localhost:6006) - Component documentation (run
+  `pnpm storybook`)
+- [Vite Docs](https://vite.dev) - Build tool documentation
+- [React Compiler](https://react.dev/learn/react-compiler) - Automatic
+  optimization
+- [shadcn/ui](https://ui.shadcn.com) - Component library

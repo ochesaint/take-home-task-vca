@@ -1,5 +1,4 @@
 import { apiPost } from '@/lib/api-client'
-import { env } from '@/config/env'
 import { Sentry } from '@/lib/sentry'
 import {
   corporationValidationResponseSchema,
@@ -8,8 +7,12 @@ import {
 } from '../schemas/onboarding.schema'
 import type { CorporationValidationResponse } from '../types/onboarding.types'
 
-const API_BASE =
-  env.VITE_ENVIRONMENT === 'development' ? '/api' : env.VITE_API_BASE_URL
+/**
+ * API base URL.
+ * Uses /api prefix which is proxied by Vite in development and Vercel in production.
+ * This avoids CORS issues and provides a consistent API path.
+ */
+const API_BASE = '/api'
 
 /**
  * Validates a corporation number via the API.

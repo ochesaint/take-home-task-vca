@@ -1,13 +1,12 @@
 import { z } from 'zod'
 import { Sentry } from '@/lib/sentry'
-import { env } from '@/config/env'
 
 /**
  * API base URL.
- * Uses Vite proxy in development to bypass CORS.
+ * Uses /api prefix which is proxied by Vite in development and Vercel in production.
+ * This avoids CORS issues and provides a consistent API path.
  */
-const API_BASE =
-  env.VITE_ENVIRONMENT === 'development' ? '/api' : env.VITE_API_BASE_URL
+const API_BASE = '/api'
 
 /**
  * Type-safe API request with Zod validation.
