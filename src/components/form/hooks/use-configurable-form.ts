@@ -70,6 +70,7 @@ export function useConfigurableForm<T extends FieldValues>({
   const hasErrors = Object.keys(errors).length > 0
 
   // Watch all field values to check if form is filled
+  // eslint-disable-next-line react-hooks/incompatible-library
   const values = form.watch()
   const allFieldsFilled = Object.values(values).every(
     (v) => v && String(v).trim().length > 0

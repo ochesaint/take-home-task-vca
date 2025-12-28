@@ -26,6 +26,7 @@ interface WrapperProps {
   children: ReactNode
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 function AllTheProviders({ children }: WrapperProps) {
   const queryClient = createTestQueryClient()
 
@@ -47,5 +48,6 @@ const customRenderHook = <TProps, TResult>(
 ) => renderHook(hook, { wrapper: AllTheProviders, ...options })
 
 // Re-export everything
+// eslint-disable-next-line react-refresh/only-export-components
 export * from '@testing-library/react'
 export { customRender as render, customRenderHook as renderHook }
